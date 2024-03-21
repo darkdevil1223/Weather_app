@@ -3,12 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.weather-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.location h2 {
+    margin-bottom: 5px;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.weather-info div {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.weather-info div:last-child {
+    border-right: none;
+}
+
+.temperature p {
+    font-size: 24px;
+}
+
+.description p {
+    font-style: italic;
+}
+
+
+    </style>
     <title>Document</title>
 </head>
 <body>
     <form  method="post" >
-        {% csrf_token %}
-        <h1>HOME</h1>
+        {% csrf_token %}    
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <div class="location">
+            <input type="text" name="city">
+            <h1>{{loc}}</h1>
+        </div>
+        <div class="weather-info">
+            <div class="temperature">
+                <h2>Temperature</h2>
+                <p>{{temp}}'c</p>
+            </div>
+            <div class="description">
+                <h2>Description</h2>
+              
+                <p>{{weather}}</p>
+                
+            </div>
+            <div class="humidity">
+                <h2>Humidity</h2>
+                <p>{{hum}}%</p>
+            </div>
+            <div class="wind">
+                <h2>Wind Speed</h2>
+                <p>{{spd}}Kmph</p>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </div>
+
     </form>
     </body>
 </html>
