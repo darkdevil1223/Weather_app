@@ -2,64 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+body{
+    background-image: url(/templates/photo-1433863448220-78aaa064ff47.avif);
 }
-
 .weather-container {
     max-width: 600px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 100px;
+    background-color: rgba(172, 182, 183, 0.67); 
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
-    background-color: #f9f9f9;
+    margin-top: 9vw;
+    
 }
-
-h1 {
-    margin-top: 0;
-}
-
-.location h2 {
-    margin-bottom: 5px;
-}
-
-.weather-info {
+.weather-info{
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
 }
-
-.weather-info div {
-    flex: 1;
-    padding: 10px;
-    border-right: 1px solid #ccc;
+#btn{
+    border-radius: 50px;
+    padding: 10px 20px;
+    background-color: #859091;
+    transition: all ease 0.4s;
+    position: relative;
+    color: black;
+    overflow: hidden;
 }
-
-.weather-info div:last-child {
-    border-right: none;
+#btn:hover::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #ccc;
+    color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.4s;
 }
+#btn:hover::after{
+    /* background-color: #ccc; */
+    bottom: 0;
+    border-radius: 0;
+    /* color: black; */
 
-.temperature p {
-    font-size: 24px;
 }
-
-.description p {
-    font-style: italic;
+p{
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline;
 }
-
-
+input{
+    background-color: #ccc;
+}
     </style>
     <title>Document</title>
 </head>
 <body>
-    <form  method="post" >
-        {% csrf_token %}    
-    <div class="weather-container">
+    <!-- <img src="/templates/wallpapersden.com_cool-red-mountains-4k_4000x2250.jpg" id="img"> -->
+    <div class="wrapper">
+        <!-- <div id="span1"></div>
+        <div id="span2"></div> -->
+
+        <form  method="post" >
+            {% csrf_token %}    
+            <div class="bg"><img src="/templates/photo-1433863448220-78aaa064ff47.avif" alt=""></div>
+            <div class="weather-container">
         <h1>Weather App</h1>
         <div class="location">
             <input type="text" name="city">
@@ -72,7 +84,7 @@ h1 {
             </div>
             <div class="description">
                 <h2>Description</h2>
-              
+                
                 <p>{{weather}}</p>
                 
             </div>
@@ -85,8 +97,9 @@ h1 {
                 <p>{{spd}}Kmph</p>
             </div>
         </div>
-        <button type="submit">Submit</button>
+        <button id="btn" type="submit">Submit</button>
     </div>
+</div>
 
     </form>
     </body>
