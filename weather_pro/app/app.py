@@ -14,7 +14,7 @@ def wed_app():
     wether = requests.get(
         f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&APPID={api_key}")
 
-    # print(wether.json())
+    print(wether.json())
 
     wed = wether.json()['weather'][0]['description']
     spd = wether.json()['wind']['speed']
